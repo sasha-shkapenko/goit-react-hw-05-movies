@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { getSearchedMovies } from '../services/api'
+// import { getSearchedMovies } from '../services/api'
 
 export const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
