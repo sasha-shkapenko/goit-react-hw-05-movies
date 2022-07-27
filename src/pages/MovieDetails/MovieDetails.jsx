@@ -16,6 +16,7 @@ const MovieDetails = () => {
         return null;
     }
     const backLinkHref = location.state?.from ?? '/';
+    console.log(backLinkHref);
     const { original_title, vote_average, overview, genres } = movie;
     return (
         <main>

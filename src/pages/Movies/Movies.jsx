@@ -11,35 +11,31 @@ import MovieList from '../../components/MovieList/MovieList';
 const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    const filter = searchParams.get('filter' ?? '');
+    const [filter, setFilter] = useState('');
 
     const onFormInput = value => {
-        setSearchParams(value !== '' ? { filter: value } : {})
+        setFilter(value);
     }
     const onFormSubmit = (e) => {
         e.preventDefault();
-        const newQuery = e.target.query.value;
-        if (!newQuery || newQuery.trim() === '') {
+        if (!filter || filter.trim() === '') {
             toast.warning('Enter your query');
             return;
         }
-        getSearchedMovies(newQuery).then(res => {
+        getSearchedMovies(filter).then(res => {
             if (res.length === 0) {
                 toast.error('Nothing found');
             }
             setMovies([...res]);
+            const nextParams = filter !== '' ? { filter } : {};
+            setSearchParams(nextParams);
         });
 
     }
     useEffect(() => {
         if (searchParams.get('filter') !== null) {
             const newQuery = searchParams.get('filter');
-            getSearchedMovies(newQuery).then(res => {
-                if (res.length === 0) {
-                    toast.error('Nothing found');
-                }
-                setMovies([...res]);
-            }).catch(error => console.log(error));
+            getSearchedMovies(newQuery).then(setMovies).catch(error => console.log(error));
         }
     }, [searchParams])
 
