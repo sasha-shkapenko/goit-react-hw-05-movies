@@ -1,5 +1,5 @@
-import { useState, useEffect, Suspense } from 'react';
-import { Link, Outlet, useParams } from "react-router-dom";
+import { lazy, useState, useEffect, Suspense } from 'react';
+import { Link, Outlet, useParams, Routes, Route } from "react-router-dom";
 import { getMovieInfo } from "services/api";
 import { useLocation } from "react-router-dom";
 import placeholderImg from '../../images/user-icon-placeholder-1.png'
@@ -16,7 +16,6 @@ const MovieDetails = () => {
         return null;
     }
     const backLinkHref = location.state?.from ?? '/';
-    console.log(backLinkHref);
     const { original_title, vote_average, overview, genres } = movie;
     return (
         <main>
@@ -42,10 +41,10 @@ const MovieDetails = () => {
             </div>
             <ul className={s.aditionalInfo}>
                 <li className={s.item}>
-                    <Link to="cast" className={s.link}>Cast</Link>
+                    <Link to="cast" state={{ from: backLinkHref }} className={s.link}>Cast</Link>
                 </li>
                 <li className={s.item}>
-                    <Link to="reviews" className={s.link} >Reviews</Link>
+                    <Link to="reviews" state={{ from: backLinkHref }} className={s.link} >Reviews</Link>
                 </li>
             </ul>
             <Suspense>

@@ -13,7 +13,7 @@ export const App = () => {
   return (
     <div>
       <nav className={s.navigation}>
-        <NavLink to='/' className={({ isActive }) => isActive ? [s.link, s.active].join(' ') : s.link}>
+        <NavLink to='/' className={({ isActive }) => { return isActive ? [s.link, s.active].join(' ') : s.link }}>
           Home
         </NavLink>
         <NavLink to='/movies' className={({ isActive }) => isActive ? [s.link, s.active].join(' ') : s.link}>

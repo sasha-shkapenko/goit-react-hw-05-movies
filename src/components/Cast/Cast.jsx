@@ -1,5 +1,5 @@
 import { getCast } from "services/api";
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import placeholderImg from '../../images/user-icon-placeholder-1.png'
 import s from './Cast.module.css';
@@ -10,7 +10,7 @@ const Cast = () => {
     useEffect(() => {
         getCast(movieId).then(setCast);
     }, [movieId])
-
+    const location = useLocation();
     return (
         cast &&
         (<ul className={s.list}>
