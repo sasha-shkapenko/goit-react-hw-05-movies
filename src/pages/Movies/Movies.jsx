@@ -1,12 +1,12 @@
 import { useSearchParams } from "react-router-dom";
-import { getSearchedMovies } from '../services/api'
+import { getSearchedMovies } from '../../services/api'
 import { useState } from "react";
 import { SearchBar } from "components/SearchBar/SearchBar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-import MovieList from '../components/MovieList/MovieList';
+import MovieList from '../../components/MovieList/MovieList';
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
