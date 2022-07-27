@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { getSearchedMovies } from '../../services/api'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SearchBar } from "components/SearchBar/SearchBar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,17 +18,30 @@ const Movies = () => {
     }
     const onFormSubmit = (e) => {
         e.preventDefault();
-        if (!filter || filter.trim() === '') {
+        const newQuery = e.target.query.value;
+        if (!newQuery || newQuery.trim() === '') {
             toast.warning('Enter your query');
             return;
         }
-        getSearchedMovies(filter).then(res => {
+        getSearchedMovies(newQuery).then(res => {
             if (res.length === 0) {
                 toast.error('Nothing found');
             }
             setMovies([...res]);
         });
+
     }
+    useEffect(() => {
+        if (searchParams.get('filter') !== null) {
+            const newQuery = searchParams.get('filter');
+            getSearchedMovies(newQuery).then(res => {
+                if (res.length === 0) {
+                    toast.error('Nothing found');
+                }
+                setMovies([...res]);
+            }).catch(error => console.log(error));
+        }
+    }, [searchParams])
 
     return (
         <main>
