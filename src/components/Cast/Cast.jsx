@@ -10,7 +10,6 @@ const Cast = () => {
     useEffect(() => {
         getCast(movieId).then(setCast);
     }, [movieId])
-    const location = useLocation();
     return (
         cast &&
         (<ul className={s.list}>

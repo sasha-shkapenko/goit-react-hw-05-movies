@@ -1,5 +1,5 @@
-import { lazy, useState, useEffect, Suspense } from 'react';
-import { Link, Outlet, useParams, Routes, Route } from "react-router-dom";
+import { useState, useEffect, Suspense } from 'react';
+import { Link, Outlet, useParams } from "react-router-dom";
 import { getMovieInfo } from "services/api";
 import { useLocation } from "react-router-dom";
 import placeholderImg from '../../images/user-icon-placeholder-1.png'
