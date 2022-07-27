@@ -1,0 +1,21 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: -10px;
+    list-style: none;
+}
+
+.item {
+    margin: 10px;
+    width: 150px;
+}
+
+.img {
+    width: 150px;
+    height: 225px;
+}
+
+.character {
+    margin-bottom: 0;
+}

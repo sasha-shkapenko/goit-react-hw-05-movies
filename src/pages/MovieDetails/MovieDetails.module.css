@@ -1,0 +1,48 @@
+.linkBack {
+    background-color: rgb(107, 157, 251);
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 15px;
+    transition: background-color 200ms;
+}
+
+.linkBack:hover {
+    background-color: rgb(234, 205, 41)
+}
+
+.wrap {
+    display: flex;
+}
+
+.img {
+    margin-right: 20px;
+    width: 250px;
+}
+
+.text {
+    color: #5d5c5c
+}
+
+.link {
+    font-size: 14pt;
+}
+
+.aditionalInfo {
+    padding: 20px 40px;
+    border-top: 1px solid #5d5c5c;
+    border-bottom: 1px solid #5d5c5c;
+}
+
+.item {
+    color: #2a2a2a;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 10px;
+}

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { getTrending } from '../services/api';
+import { getTrending } from '../../services/api';
 
-import MovieList from 'components/MovieList';
+import MovieList from 'components/MovieList/MovieList';
+import s from './Home.module.css';
 
-export const Home = () => {
+const Home = () => {
     const [movies, setMovies] = useState(null);
     useEffect(() => {
         getTrending()
@@ -13,8 +14,9 @@ export const Home = () => {
 
     return (
         <main>
-            Trending movies
+            <h1 className={s.title}>Trending movies</h1>
             {movies && <MovieList movies={movies} />}
         </main>
     );
 };
+export default Home;
